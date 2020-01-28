@@ -3,4 +3,18 @@
 
 export default {
 
+    props: ['msg'],
+
+    template: //WATCH THE BACKTICKS BRO
+    `
+        <p class="new-message"> 
+            <span>{{msg.message.name}} says:</span>
+            {{msg.message.content}}
+        </p>
+    `,
+
+    data: function(){
+        //nothing here yet, just wait
+        return {message: "this is a placeholder"}
+    }
 }
