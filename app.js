@@ -29,6 +29,16 @@ io.on('connection', function(socket) {
     //fire off emit
     socket.emit('connected', { sID: `${socket.id}`, message: 'new connection'});
 
+    //listen for an incomming message from user socket
+    //msg is the incomming message from the user
+    socket.on('chat_message', function(msg) {
+        console.log(msg);
+
+        //when we get the message send ti to everyone to see
+        //io ensures connections, and makes sure all users get the msg
+        io.emit('new_message', { id: socket.id, message: msg })
+    })
+
 
     //listen for disconnection
     socket.on('disconnect', function(){

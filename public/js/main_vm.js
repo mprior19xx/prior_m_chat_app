@@ -7,12 +7,18 @@ function setUserId({sID, message}) {
     //debugger;
     vm.socketID = sID;
     
-}
+};
 
 function runDisconnectMessage (packet) {
     //debugger;
     console.log(packet);
-}
+};
+
+
+function appendNewMessage(msg){
+    //take the new message and push it into the vue model
+    vm.messages.push(msg);
+};
 
 //this is our main vue instance
 const vm = new Vue({
@@ -32,6 +38,8 @@ const vm = new Vue({
                 content: this.message,
                 name: this.nickName || "anonymous", // || is OR operator, if nickName is blank make anon
             });
+
+            this.message = "";
         },
 
     },
@@ -50,3 +58,4 @@ const vm = new Vue({
 // some event handling -> events are coming from the server
 socket.addEventListener('connected', setUserId);
 socket.addEventListener('user_disconnect', runDisconnectMessage);
+socket.addEventListener('new_message', appendNewMessage);
