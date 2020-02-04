@@ -7,14 +7,16 @@ export default {
 
     template: //WATCH THE BACKTICKS BRO
     `
-        <p class="new-message"> 
+        <p class="new-message" :class="{ 'my-message' : matchedID }"> 
             <span>{{msg.message.name}} says:</span>
             {{msg.message.content}}
         </p>
     `,
 
-    data: function(){
+    data: function() {
         //nothing here yet, just wait
-        return {message: "this is a placeholder"}
+        return {
+            matchedID: this.$parent.socketID == this.msg.id
+        }
     }
 }
