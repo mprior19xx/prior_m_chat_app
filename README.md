@@ -1,10 +1,10 @@
-# Chat App - Scott Olthoff
+# Chat App
 
 ### Authors
-Scott Olthoff
+Mike Prior
 
-### Prerequisites
-To run this project, you need a web browser, Git Bash (if on Windows), and Node.
+### Required
+To run this project, you need a web browser, Git Bash (for Windows), and Node.
 
 ### How to Run
 1. Go to GitHub and clone the project into the directory of your choosing.
@@ -14,14 +14,12 @@ To run this project, you need a web browser, Git Bash (if on Windows), and Node.
 5. Open a web browser and navigate to __localhost:3030__
 
 ### Purpose
-The purpose of this project is to build upon the Chat App that we created in class to make it our own.
+The purpose of this project is to build upon the Chat App that we created in class.
 
-### Languages Used
+### Languages & Resources Used
 * HTML (HTML5)
 * CSS (CSS3) 
 * JavaScript
-
-### Programs and Resources Used
 * Visual Studio Code
 * Github / Git Bash
 * Google Chrome
