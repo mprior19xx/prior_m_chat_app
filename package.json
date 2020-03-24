@@ -1,15 +1,18 @@
 {
-  "name": "prior_m_chat_app",
+  "name": "prior_chat_app",
   "version": "1.0.0",
-  "description": "social media app ",
+  "description": "chatroom app",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "nodemon app"
   },
-  "author": "TVR",
+  "author": "Mike Prior",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
     "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }

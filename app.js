@@ -1,10 +1,8 @@
-//Server File
-
 var express = require('express');
 var app = express();
 
-//import the socket.io library
-const io = require('socket.io')();
+// Import the socket.io library
+const io = require('socket.io')(); // Instantiate the library right away with the () method -> makes it run
 
 const port = process.env.PORT || 3030;
 
@@ -16,35 +14,39 @@ app.get('/', (req, res) => {
 });
 
 const server = app.listen(port, () => {
-    console.log(`app is running on port ${port}`);
+    console.log(`App is running on port ${port}`);
 });
 
-//socket.io message functionality
+// This is all of our socket.io messaging functionality
 
-//attach socket.io
+// Attach socket.io
 io.attach(server);
 
 io.on('connection', function(socket) {
-    console.log('user connection');
-    //fire off emit
-    socket.emit('connected', { sID: `${socket.id}`, message: 'new connection'});
+    socket.emit('connected', { sID: `${socket.id}`, count: io.engine.clientsCount - 1 }); // Last argument passes number of users in room before joining
 
-    //listen for an incomming message from user socket
-    //msg is the incomming message from the user
+    // Notifies other users when a new user joins
+    message = socket.id;
+    io.emit('new_user', message);
+
+    // Listen for an incoming message from a user (socket refers to an individual user)
+    // msg is the incoming message from that user
     socket.on('chat_message', function(msg) {
-        console.log(msg);
-
-        //when we get the message send ti to everyone to see
-        //io ensures connections, and makes sure all users get the msg
-        io.emit('new_message', { id: socket.id, message: msg })
+        // When we get a new message, send it to everyone so they see it
+        // io is the switchboard operator, making sure everyone who's connected gets the message.
+        io.emit('new_message', { id: socket.id, message: msg});
     })
 
-
-    //listen for disconnection
-    socket.on('disconnect', function(){
-        console.log('user has disconnected');
-
-        message = `${socket.id} has left the Chat.`;
+    // Listen for disconnect event
+    socket.on('disconnect', function() {
+        message = "A user has disconnected.";
         io.emit('user_disconnect', message);
+    })
+
+    // Displays a message on connect / disconnect
+    socket.on('connection_message', function(msg) {
+        // When we get a new message, send it to everyone so they see it
+        // io is the switchboard operator, making sure everyone who's connected gets the message.
+        socket.emit('new_message', {message: msg});
     })
 })

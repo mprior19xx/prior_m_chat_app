@@ -3,7 +3,8 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Socket IO Chat with Node!</title>
+	<title>Chat App</title>
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="https://unpkg.com/vue"></script>
 </head>
@@ -11,25 +12,28 @@
 <body>
 	<main id="app">
 		<section class="form-container">
-			<label for="nickname">Your Nickname (optional)</label>
-			<input type="text" id="nickname" class="nickname" placeholder="What is your nickname?">
+			<h1>Unregistered Hypercam #391</h1>
+
+			<label id="nick" for="nickname">Enter A Username, or leave it blank to stay anonymous:</label>
+			<input v-model="nickName" type="text" id="nickname" class="nickname" placeholder="Enter your Username">
 
 			<form>
-				<label for="message">Something to say?</label>
-				<textarea v-model="message" class="message" type="text" autocomplete="off" id="textarea"></textarea>
-				<input @click.prevent="dispatchMessage" type="submit">
+				<label for="message">Message:</label>
+				<!-- CTRL + Enter will send the message as well -->
+				<textarea v-model="message" v-on:keyup.ctrl.13="dispatchMessage" class="message" type="text" autocomplete="off" id="textarea"></textarea> 
+				<input @click.13.prevent="dispatchMessage" type="submit" value="Send" id="submitBtn">
 			</form>
+
+			<p id="userCount"># of Chatters: {{userNum}}</p>
 		</section>
 
 		<section class="messages">
 			<ul id="messages" v-for="message in messages">
 				<!-- render a new message component for every message -->
-				<newmessage :msg="message"> </newmessage>
+				<newmessage :msg="message"></newmessage>
 			</ul>
-		</section> 
-
-	<!-- END MAIN -->
-	</main> 
+		</section>
+	</main>
 	<script src="/socket.io/socket.io.js"></script>
 	<script type="module" src="js/main_vm.js"></script>
 </body>
