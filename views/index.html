@@ -10,27 +10,25 @@
 </head>
 
 <body>
+	<div id="logoCon">
+		<h1 id="siteheading">Welcome to <span class="hidden">Quick Chat</span></h1>
+		<img src="images/logo.png" id="mainLogo">
+	</div>
 	<main id="app">
-		
 			<section class="form-container">
-				<h1 class="hidden">Mike's Chat Room</h1>
-				
-				<div id="logoCon">
-					<img src="images/logo.png" id="mainLogo">
+				<h2 class="hidden">Message Area</h2>
+
+				<div id="formCon">
+					<label id="nick" for="nickname">Enter A Username, or leave it blank to stay anonymous:</label>
+					<input v-model="nickName" type="text" id="nickname" class="nickname" placeholder="Enter your Username">
+
+					<form>
+						<label id="msgLabel" for="message">Message:</label>
+						<!-- CTRL + Enter will send the message as well -->
+						<textarea v-model="message" v-on:keyup.ctrl.13="dispatchMessage" class="message" type="text" autocomplete="off" id="textarea"></textarea> 
+						<input @click.13.prevent="dispatchMessage" type="submit" value="Send" id="submitBtn">
+					</form>
 				</div>
-				
-
-				<label id="nick" for="nickname">Enter A Username, or leave it blank to stay anonymous:</label>
-				<input v-model="nickName" type="text" id="nickname" class="nickname" placeholder="Enter your Username">
-
-				<form>
-					<label id="msgLabel" for="message">Message:</label>
-					<!-- CTRL + Enter will send the message as well -->
-					<textarea v-model="message" v-on:keyup.ctrl.13="dispatchMessage" class="message" type="text" autocomplete="off" id="textarea"></textarea> 
-					<input @click.13.prevent="dispatchMessage" type="submit" value="Send" id="submitBtn">
-				</form>
-
-				<p id="userCount"># of Chatters: {{userNum}}</p>
 			</section>
 
 			<section class="messages">
