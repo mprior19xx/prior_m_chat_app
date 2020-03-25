@@ -7,6 +7,8 @@
 	margin: 0; padding: 0; box-sizing: border-box;
 }
 
+.hidden{display:none;}
+
 html, body { height: 100%; color:$white; }
 
 body { font: 16px Helvetica, Arial; }
@@ -23,6 +25,18 @@ main {
 	flex-direction: row;
 	color: $black;
 	overflow: none;
+}
+
+#logoCon{
+	display:flex;
+	margin:0 auto;
+	margin-top:10px;
+	margin-bottom:20px;
+}
+
+#mainLogo{
+	max-width:30%;
+	margin: 0 auto;
 }
 
 
