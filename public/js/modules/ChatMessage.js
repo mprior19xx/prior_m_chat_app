@@ -6,7 +6,10 @@ export default {
 
     template: `
         <p class="new-message" :class="{ 'my-message' : matchedID, 'console' : isConsole }">
-            <span>{{msg.message.name}}:</span>
+            
+                <img src="images/avi.svg" width="20px" height="20px">
+                <span>{{msg.message.name}}:</span>
+            
             {{msg.message.content}}
         </p>
     `,

@@ -9,14 +9,35 @@
 
 .hidden{display:none;}
 
-html, body { height: 100%; color:$white; }
+html, body { max-height: 100%; color:$white; }
 
-body { font: 16px Helvetica, Arial; }
+body { font: 16px Helvetica, Arial; 
+		background: $black;
+	padding:25px;}
 
 h1 {
-	font-size: 50px;
-	margin-bottom: 25px;
+	font-size: 30px;
 	color: $white;
+}
+
+#logoCon{
+	display:flex;
+	flex-direction: column;
+	margin:0 auto;
+	max-width:100%;
+	background: $black;
+	padding-top:25px;
+	padding-bottom:50px;
+}
+
+#mainLogo{
+	min-width:10%;
+	max-width:20%;
+	margin: 0 auto;
+}
+
+#siteheading{
+	margin: 0 auto;
 }
 
 main { 
@@ -27,36 +48,29 @@ main {
 	overflow: none;
 }
 
-#logoCon{
-	display:flex;
-	margin:0 auto;
-	margin-top:10px;
-	margin-bottom:20px;
-}
-
-#mainLogo{
-	max-width:30%;
-	margin: 0 auto;
-}
-
 
 .form-container, .messages { padding: 20px; }
 
 .form-container { 
 	flex: 1; 
-	border: 6px solid $lilac;
+	border: 3px solid $lilac;
 	background-color: $black;
 	z-index: 100;
-	box-shadow: 5px 5px 5px #000000;	 
+	height: 400px;
+	box-shadow: 5px 5px 5px #000000;	
+	padding:50px; 
 	label { display: block; margin-bottom: 0.5rem;
 	 }
+
 }
+
 
 .messages { 
 	flex: 2;
 	background-color: $black;
 	overflow: auto;
 	color: $white;
+	height: 400px;
 }
 
 #msgLabel{
