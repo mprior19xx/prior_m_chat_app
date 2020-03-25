@@ -11,15 +11,14 @@
 
     width: 45%;
     padding: 8px 12px;
-    background-color: $darkBlue; 
+    background-color: $lilac; 
     border-radius: 8px;
     margin-bottom: 1rem;
-    box-shadow: 3px 3px 5px $darkBlue;
-    word-wrap: break-word;
-    
-
+    box-shadow: 5px 5px 5px #000000;
+        word-wrap: break-word;
     float:left;
     clear: both;
+    color: $black;
 
     animation-name: fadeIn;
     animation-duration: 0.25s;
@@ -27,15 +26,17 @@
 
 .my-message {
     float: right !important;
-    background-color: $darkBlue;
+    background-color: $teal;
+    color: $black;
 }
 
 .console {
     font-style: italic;
-    background-color: $tan;
+    background-color: $white;
+    border-radius: 3px $error;
     color: $black;
 }
 
 #name{
-    color: white;
+    color: $white;
 }
