@@ -13,7 +13,12 @@
 	<main id="app">
 		
 			<section class="form-container">
-				<h1>Mike's Chat Room</h1>
+				<h1 class="hidden">Mike's Chat Room</h1>
+				
+				<div id="logoCon">
+					<img src="images/logo.png" id="mainLogo">
+				</div>
+				
 
 				<label id="nick" for="nickname">Enter A Username, or leave it blank to stay anonymous:</label>
 				<input v-model="nickName" type="text" id="nickname" class="nickname" placeholder="Enter your Username">
