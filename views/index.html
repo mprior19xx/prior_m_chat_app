@@ -11,28 +11,30 @@
 
 <body>
 	<main id="app">
-		<section class="form-container">
-			<h1>Unregistered Hypercam #391</h1>
+		
+			<section class="form-container">
+				<h1>Mike's Chat Room</h1>
 
-			<label id="nick" for="nickname">Enter A Username, or leave it blank to stay anonymous:</label>
-			<input v-model="nickName" type="text" id="nickname" class="nickname" placeholder="Enter your Username">
+				<label id="nick" for="nickname">Enter A Username, or leave it blank to stay anonymous:</label>
+				<input v-model="nickName" type="text" id="nickname" class="nickname" placeholder="Enter your Username">
 
-			<form>
-				<label for="message">Message:</label>
-				<!-- CTRL + Enter will send the message as well -->
-				<textarea v-model="message" v-on:keyup.ctrl.13="dispatchMessage" class="message" type="text" autocomplete="off" id="textarea"></textarea> 
-				<input @click.13.prevent="dispatchMessage" type="submit" value="Send" id="submitBtn">
-			</form>
+				<form>
+					<label id="msgLabel" for="message">Message:</label>
+					<!-- CTRL + Enter will send the message as well -->
+					<textarea v-model="message" v-on:keyup.ctrl.13="dispatchMessage" class="message" type="text" autocomplete="off" id="textarea"></textarea> 
+					<input @click.13.prevent="dispatchMessage" type="submit" value="Send" id="submitBtn">
+				</form>
 
-			<p id="userCount"># of Chatters: {{userNum}}</p>
-		</section>
+				<p id="userCount"># of Chatters: {{userNum}}</p>
+			</section>
 
-		<section class="messages">
-			<ul id="messages" v-for="message in messages">
-				<!-- render a new message component for every message -->
-				<newmessage :msg="message"></newmessage>
-			</ul>
-		</section>
+			<section class="messages">
+				<ul id="messages" v-for="message in messages">
+					<!-- render a new message component for every message -->
+					<newmessage :msg="message"></newmessage>
+				</ul>
+			</section>
+
 	</main>
 	<script src="/socket.io/socket.io.js"></script>
 	<script type="module" src="js/main_vm.js"></script>
